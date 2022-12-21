@@ -2,27 +2,32 @@
 
 # Created by: Venika Sem
 # Created on: Dec 2022
-# This program uses an array
+# This program translates anything to Pig Latin
 
 
-import random
+def to_pig_latin(text):
+    words = text.split()
+    translated_words = []
+
+    for word in words:
+        if len(word) == 1:
+            translated_word = word + "ay"
+        else:
+            translated_word = word[1:] + word[0] + "ay"
+        translated_words.append(translated_word)
+    translated_text = " ".join(translated_words)
+
+    return translated_text
 
 
-# initializing list
-test_list = [1, 4, 6, 7, 2]
- 
-# printing original list
-print ("Original list : " + str(test_list))
- 
-# using slicing to left rotate by 3
-test_list = test_list[3:] + test_list[:3]
+def main():
+    # Gets from user
+    user_input = input("Write a anything you want to translate to Pig Latin: ")
+    user_input_translated = to_pig_latin(user_input)
+    print("\n{}.".format(user_input_translated))
 
-# Printing list after left rotate
-print ("List after left rotate by 3 : " + str(test_list))
- 
-# using slicing to right rotate by 3
-# back to Original
-test_list = test_list[-3:] + test_list[:-3]
- 
-# Printing after right rotate
-print ("List after right rotate by 3(back to original) : "+ str(test_list))
+    print("\nDone.")
+
+
+if __name__ == "__main__":
+    main()
